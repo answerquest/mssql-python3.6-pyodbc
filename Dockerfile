@@ -15,10 +15,10 @@ RUN curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > /etc/apt
 RUN apt-get update && apt-get install -y libssl1.0.0 libssl-dev
 
 # install SQL Server drivers
-RUN apt-get update && ACCEPT_EULA=Y apt-get install -y msodbcsql17 unixodbc-dev
+RUN apt-get update && ACCEPT_EULA=Y apt-get install -y msodbcsql=13.0.1.0-1 unixodbc-dev-utf16
 
 # install SQL Server tools
-RUN apt-get update && ACCEPT_EULA=Y apt-get install -y mssql-tools
+RUN apt-get update && ACCEPT_EULA=Y apt-get install -y mssql-tools=14.0.2.0-1
 RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 RUN /bin/bash -c "source ~/.bashrc"
 
